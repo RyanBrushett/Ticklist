@@ -118,7 +118,7 @@ public class ModelsTest extends WithApplication {
     }
 
     @Test
-    public void findBouldersNeverSentBy(){
+    public void findBouldersByCrag(){
         Climber ryan = new Climber("ryanbrushett","Ryan Brushett","Wireless01!");
         ryan.save();
 
@@ -137,5 +137,8 @@ public class ModelsTest extends WithApplication {
         b2.grade = "V5";
         b2.crag = crag;
         b2.save();
+
+        List<Boulder> results = Boulder.getBouldersByCrag("Main Face");
+        assertEquals(2,results.size());
     }
 }

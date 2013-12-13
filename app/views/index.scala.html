@@ -1,7 +1,22 @@
-@(message: String)
+@(crags: List[Crag], boulders: List[Boulder])
 
-@main("Welcome to Play") {
+@main("Tick List") {
+    <header>
+        <hgroup>
+            <h1>Ticklist</h1>
+        </hgroup>
+    </header>
 
-    <h1>@message</h1>
-
+    <article class="boulders">
+    <table>
+        @for(crag <- crags){
+            <th>@crag.cragName</th>
+            <tr>
+            @for(b <- boulders){
+                <td>@b.climbName</td>
+            }
+            </tr>
+        }
+    </table>
+    </article>
 }

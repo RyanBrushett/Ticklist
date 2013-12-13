@@ -36,6 +36,9 @@ public class Boulder extends Model{
     public static Boulder getBoulderById(Long id){
         return find.fetch("boulder").where().eq("id",id).findUnique();
     }
+    public static List<Boulder> getBouldersByCrag(String crag){
+        return find.where().eq("crag.cragName",crag).findList();
+    }
 
     public static Boulder create(Boulder boulder, String crag, String grade){
         boulder.crag = Crag.find.ref(crag);
