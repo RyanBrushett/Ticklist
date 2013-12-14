@@ -15,7 +15,7 @@ dist
 /.settings
 /*.jdbc
 README
-/.*.swp
+.*.swp
 # Compiled source #
 ###################
 *.com
