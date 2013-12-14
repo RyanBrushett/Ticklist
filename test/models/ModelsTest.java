@@ -65,6 +65,8 @@ public class ModelsTest extends WithApplication {
         List<Boulder> marinelab = Boulder.getBouldersByCrag("Marine Lab");
         assertEquals(2,mainface.size());
         assertEquals(1,marinelab.size());
+        assertEquals(marinelab.get(0).climbName,"Poseidon");
+        assertEquals(mainface.get(0).climbName,"Nazis and their Chickens");
     }
 
     @Test
