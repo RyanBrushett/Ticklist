@@ -5,14 +5,9 @@ Play! framework test to make a rock climbing ticklist application.
 
 TODO:
 
-1) Priority 1 at this point is to clean up the models.
-In writing everything hastily, I managed to completely muck up the models
-from the way I intended.
+1) I think I've fixed the models and fixed up all of the application tests. Everything clears so now I'd like
+to start on the UI
 
-I'd like to have people on boulders and routes, and routes and boulders at
-crags.
+2) If the UI goes well, I'd like to start styling the landing page.
 
-Instead I've somehow managed to end up with people at crags and crags not really
-doing anything and then people having sent or not sent boulders.
-
-Poor planning on my part.
+3) Add functionality like adding boulders, ticking them off, etc.
