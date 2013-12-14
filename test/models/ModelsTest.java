@@ -6,139 +6,71 @@ import static org.junit.Assert.*;
 import play.test.WithApplication;
 import static play.test.Helpers.*;
 import java.util.List;
+import java.util.Map;
+import com.avaje.ebean.Ebean;
+import play.*;
+import play.libs.*;
 
 public class ModelsTest extends WithApplication {
     @Before
     public void setUp() {
         start(fakeApplication(inMemoryDatabase()));
+        if(Climber.find.findRowCount() == 0){
+            Map<String,List<Object>> all = (Map<String,List<Object>>)Yaml.load("test-init.yml");
+            Ebean.save(all.get("users"));
+            Ebean.save(all.get("crags"));
+            Ebean.save(all.get("boulders"));
+        }
     }
 
     @Test
-    public void createAndRetrieveClimber(){
-        new Climber("ryanbrushett","Ryan Brushett","Wireless01!").save();
-        Climber ryan = Climber.find.where().eq("username","ryanbrushett").findUnique();
-        assertNotNull(ryan);
-        assertEquals("Ryan Brushett",ryan.name);
+    public void basicDbTest(){
+        assertEquals(1,Climber.find.findRowCount());
+        assertEquals(2,Crag.find.findRowCount());
+        assertEquals(3,Boulder.find.findRowCount());
     }
 
     @Test
-    public void tryAuthenticateUser(){
-        new Climber("ryanbrushett","Ryan Brushett","Wireless01!").save();
+    public void authenticationTest(){
         assertNotNull(Climber.authenticate("ryanbrushett","Wireless01!"));
         assertNull(Climber.authenticate("ryanbrushett","badpassword"));
-        assertNull(Climber.authenticate("bananas","badpassword"));
+        assertNull(Climber.authenticate("katesargent","badpassword"));
     }
 
     @Test
-    public void findCragsInvolving(){
-        new Climber("ryanbrushett","Ryan Brushett","Wireless01!").save();
-        new Climber("katesargent","Kate Sargent","swisscheese").save();
-
-        Crag.create("Main Face","Flackrock, NL","ryanbrushett");
-        Crag.create("Bloodbath","Flatrock, NL","katesargent");
-
-        List<Crag> results = Crag.findInvolving("ryanbrushett");
-        assertEquals(1,results.size());
-        assertEquals("Main Face",results.get(0).cragName);
+    public void boulderCheckSent(){
+        List<Boulder> boulders;
+        boulders = Boulder.findAllSent();
+        assertEquals(3,boulders.size());
     }
 
     @Test
-    public void findBouldersInvolving(){
-        Climber ryan = new Climber("ryanbrushett","Ryan Brushett","Wireless01!");
-        ryan.save();
-
-        Crag crag = Crag.create("Main Face","Flatrock, NL","ryanbrushett");
-        Boulder b1 = new Boulder();
-        b1.climbName = "Nazis and their Chickens";
-        b1.grade = "V3";
-        b1.crag = crag;
-        b1.haveSent.add(ryan);
-        b1.sent = true;
-        b1.save();
-
-        Boulder b2 = new Boulder();
-        b2.climbName = "Nosferatu";
-        b2.grade = "V5";
-        b2.crag = crag;
-        b2.save();
-
-        List<Boulder> results = Boulder.findBoulderSentBy("ryanbrushett");
-        assertEquals(1,results.size());
-        assertEquals("Nazis and their Chickens",results.get(0).climbName);
+    public void boulderCheckNeverSent(){
+        List<Boulder> boulders;
+        boulders = Boulder.findBouldersNeverSent();
+        assertEquals(0,boulders.size());
     }
 
     @Test
-    public void findAllBoulders(){
-        Climber ryan = new Climber("ryanbrushett","Ryan Brushett","Wireless01!");
-        ryan.save();
-
-        Crag crag = Crag.create("Main Face","Flatrock, NL","ryanbrushett");
-        Boulder b1 = new Boulder();
-        b1.climbName = "Nazis and their Chickens";
-        b1.grade = "V3";
-        b1.crag = crag;
-        b1.haveSent.add(ryan);
-        b1.sent = true;
-        b1.save();
-
-        Boulder b2 = new Boulder();
-        b2.climbName = "Nosferatu";
-        b2.grade = "V5";
-        b2.crag = crag;
-        b2.save();
-
-        List<Boulder> results = Boulder.findAll();
-        assertEquals(2,results.size());
-        assertEquals("Nosferatu",results.get(1).climbName);
+    public void boulderCheckSentBy(){
+        List<Boulder> boulders;
+        boulders = Boulder.findBoulderSentBy("ryanbrushett");
+        assertEquals(2,boulders.size());
+        assertEquals("Nazis and their Chickens",boulders.get(0).climbName);
     }
 
     @Test
-    public void findAllUnsent(){
-        Climber ryan = new Climber("ryanbrushett","Ryan Brushett","Wireless01!");
-        ryan.save();
-
-        Crag crag = Crag.create("Main Face","Flatrock, NL","ryanbrushett");
-        Boulder b1 = new Boulder();
-        b1.climbName = "Nazis and their Chickens";
-        b1.grade = "V3";
-        b1.crag = crag;
-        b1.haveSent.add(ryan);
-        b1.sent = true;
-        b1.save();
-
-        Boulder b2 = new Boulder();
-        b2.climbName = "Nosferatu";
-        b2.grade = "V5";
-        b2.crag = crag;
-        b2.save();
-
-        List<Boulder> results = Boulder.findBouldersNeverSent();
-        assertEquals(1,results.size());
-        assertEquals("Nosferatu",results.get(0).climbName);
+    public void boulderCheckBouldersByCrag(){
+        List<Boulder> mainface  = Boulder.getBouldersByCrag("Main Face");
+        List<Boulder> marinelab = Boulder.getBouldersByCrag("Marine Lab");
+        assertEquals(2,mainface.size());
+        assertEquals(1,marinelab.size());
     }
 
     @Test
-    public void findBouldersByCrag(){
-        Climber ryan = new Climber("ryanbrushett","Ryan Brushett","Wireless01!");
-        ryan.save();
-
-        Crag crag = Crag.create("Main Face","Flatrock, NL","ryanbrushett");
-
-        Boulder b1 = new Boulder();
-        b1.climbName = "Nazis and their Chickens";
-        b1.grade = "V3";
-        b1.crag = crag;
-        b1.haveSent.add(ryan);
-        b1.sent = true;
-        b1.save();
-
-        Boulder b2 = new Boulder();
-        b2.climbName = "Nosferatu";
-        b2.grade = "V5";
-        b2.crag = crag;
-        b2.save();
-
-        List<Boulder> results = Boulder.getBouldersByCrag("Main Face");
-        assertEquals(2,results.size());
+    public void cragCheckCrags(){
+        List<Crag> crags = Crag.findAll();
+        assertEquals(2,crags.size());
+        assertEquals(crags.get(0).cragName,"Main Face");
     }
 }

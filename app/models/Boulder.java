@@ -8,11 +8,10 @@ import play.db.*;
 @Entity
 public class Boulder extends Model{
     @Id
-    public Long id;
     public String climbName;
     public String firstAssent;
     public String grade;
-    public boolean sent = false;
+    public boolean sent = true;
     public Date climbedDate;
     @ManyToMany(cascade = CascadeType.REMOVE)
     public List<Climber> haveSent = new ArrayList<Climber>();
@@ -25,16 +24,13 @@ public class Boulder extends Model{
         return find.where().eq("sent",true).eq("haveSent.username",climber).findList();
     }
     public static List<Boulder> findAllSent(){
-        return find.fetch("boulder").where().eq("sent",true).findList();
+        return find.where().eq("sent",true).findList();
     }
     public static List<Boulder> findAll(){
         return find.all();
     }
     public static List<Boulder> findBouldersNeverSent(){
         return find.where().eq("sent",false).findList();
-    }
-    public static Boulder getBoulderById(Long id){
-        return find.fetch("boulder").where().eq("id",id).findUnique();
     }
     public static List<Boulder> getBouldersByCrag(String crag){
         return find.where().eq("crag.cragName",crag).findList();
@@ -46,16 +42,4 @@ public class Boulder extends Model{
         boulder.save();
         return boulder;
     }
-
-    /*public void addSend(String climber){
-        haveSent.add(Climber.find.ref(climber));
-        this.sent = true;
-        this.saveManyToManyAssociations("haveSent");
-    }
-
-    public void addProject(String climber){
-        projecting.add(Climber.find.ref(climber));
-        this.saveManyToManyAssociations("projecting");
-    }*/
-
 }
