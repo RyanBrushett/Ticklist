@@ -8,4 +8,12 @@
     @if(boulder.firstAssent != null){
         <td><i>@boulder.firstAssent</i></td>
     }
+    @if(boulder.sent != null){
+        @if(boulder.sent == true){
+            <td>sent</td>
+        }
+        @if(boulder.sent == false){
+            <td><button class=tick>Tick</button></td>
+        }
+    }
 </tr>
