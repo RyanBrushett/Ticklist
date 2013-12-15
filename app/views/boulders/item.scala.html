@@ -1,0 +1,11 @@
+@(boulder: Boulder)
+
+<tr data-boulder-name="@boulder.climbName">
+    <td><h4>@boulder.climbName</h4></td>
+    @if(boulder.grade != null){
+        <td><b>@boulder.grade</b></td>
+    }
+    @if(boulder.firstAssent != null){
+        <td><i>@boulder.firstAssent</i></td>
+    }
+</tr>

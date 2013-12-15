@@ -1,6 +1,6 @@
 @(crags: List[Crag], boulders: List[Boulder])
 
-@main("Tick List") {
+@main(crags) {
     <header>
         <hgroup>
             <h1>Ticklist</h1>
@@ -8,15 +8,31 @@
     </header>
 
     <article class="boulders">
-    <table>
-        @for(crag <- crags){
-            <th>@crag.cragName</th>
-            <tr>
-            @for(b <- boulders){
-                <td>@b.climbName</td>
-            }
-            </tr>
+    @boulders.groupBy(_.crag).map{
+        case (crag,boulders) => {
+            <header>
+                <h3>@crag.cragName</h3>
+            </header>
+            <!--script>
+                $(function(){
+                    $("table#climbs").tablesorter({ sortList: [[0,0]] });
+                });
+            </script-->
+            <table id="climbs" class="table table-striped tablesorter">
+                <thead>
+                    <tr>
+                        <th>Climb</th>
+                        <th>Grade</th>
+                        <th>FA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @boulders.map{ boulder =>
+                        @views.html.boulders.item(boulder)
+                    }
+                </tbody>
+            </table>
+            </article>
         }
-    </table>
-    </article>
+    }
 }
