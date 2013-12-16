@@ -10,10 +10,15 @@
     }
     @if(boulder.sent != null){
         @if(boulder.sent == true){
-            <td>sent</td>
+            <td class="text-center">
+                <div class="btn-group btn-group-xs">
+                <button type="button" class="btn btn-success">Sent</button>
+                <button type="button" class="btn btn-danger">Undo</button>
+                </div>
+            </td>
         }
         @if(boulder.sent == false){
-            <td><button class=tick>Tick</button></td>
+            <td class="text-center"><button class="btn btn-sm btn-success tick">Tick</button></td>
         }
     }
 </tr>

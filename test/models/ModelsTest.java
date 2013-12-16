@@ -14,7 +14,7 @@ import play.libs.*;
 public class ModelsTest extends WithApplication {
     @Before
     public void setUp() {
-        start(fakeApplication(inMemoryDatabase()));
+        start(fakeApplication(inMemoryDatabase(), fakeGlobal()));
         if(Climber.find.findRowCount() == 0){
             Map<String,List<Object>> all = (Map<String,List<Object>>)Yaml.load("test-init.yml");
             Ebean.save(all.get("users"));
