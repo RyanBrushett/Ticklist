@@ -21,7 +21,7 @@ public class Boulder extends Model{
     public static Model.Finder<String,Boulder> find = new Model.Finder(String.class,Boulder.class);
 
     public static List<Boulder> findBoulderSentBy(String climber){
-        return find.where().eq("sent",true).eq("haveSent.username",climber).findList();
+        return find.where().eq("haveSent.username",climber).findList();
     }
     public static List<Boulder> findAllSent(){
         return find.where().eq("sent",true).findList();

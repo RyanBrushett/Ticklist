@@ -13,7 +13,7 @@ public class Application extends Controller {
     public static Result index() {
       return ok(index.render(
           Crag.find.all(),
-          Boulder.find.all(),
+          Boulder.findBoulderSentBy(request().username()),
           Climber.find.byId(request().username())
       ));
     }

@@ -1,4 +1,4 @@
-@(boulder: Boulder)
+@(boulder: Boulder, climber: Climber)
 
 <tr data-boulder-name="@boulder.climbName">
     <td><h4>@boulder.climbName</h4></td>
@@ -8,17 +8,14 @@
     @if(boulder.firstAssent != null){
         <td><i>@boulder.firstAssent</i></td>
     }
-    @if(boulder.sent != null){
-        @if(boulder.sent == true){
-            <td class="text-center">
-                <div class="btn-group btn-group-xs">
-                <button type="button" class="btn btn-success">Sent</button>
-                <button type="button" class="btn btn-danger">Undo</button>
-                </div>
-            </td>
-        }
-        @if(boulder.sent == false){
-            <td class="text-center"><button class="btn btn-sm btn-success tick">Tick</button></td>
-        }
+    <td class="text-center">
+    @if(boulder.haveSent.exists{ a=> a.username == climber.username}) { 
+        <div class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-success">Sent</button>
+        <button type="button" class="btn btn-danger">Undo</button>
+        </div>
+    } else {
+        <button type="button" class="btn btn-success btn-sm">Tick</button>
     }
+    </td>
 </tr>

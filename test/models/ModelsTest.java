@@ -57,6 +57,7 @@ public class ModelsTest extends WithApplication {
         boulders = Boulder.findBoulderSentBy("ryanbrushett");
         assertEquals(2,boulders.size());
         assertEquals("Nazis and their Chickens",boulders.get(0).climbName);
+        assertEquals("Nosferatu",boulders.get(1).climbName);
     }
 
     @Test
