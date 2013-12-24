@@ -27,4 +27,11 @@ public class Crag extends Model{
     public static List<Crag> findAll(){
         return find.all();
     }
+    
+    public static String renameCrag(String name, String newName){
+        Crag crag = find.where().eq("cragName",name).findUnique();
+        crag.cragName = newName;
+        crag.update();
+        return crag.cragName;
+    }
 }
