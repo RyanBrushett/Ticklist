@@ -18,6 +18,15 @@ public class Application extends Controller {
       ));
     }
 
+    public static Result javascriptRoutes(){
+        response().setContentType("text/javascript");
+        return ok(
+            Routes.javascriptRouter("jsRoutes",
+                controllers.routes.javascript.Crags.addCrag()
+            )
+        );
+    }
+
     public static Result login(){
        return ok(
            login.render(form(Login.class))
