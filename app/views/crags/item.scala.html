@@ -1,5 +1,4 @@
 @(crag: Crag)
-<tr data-crag="@crag.cragName">
-    <td><a class="name" href="#">@crag.cragName</a></td>
-    <td><button class="btn btn-xs btn-danger delete" href="#">Delete</button></td>
-</tr>
+<li data-crag="@crag.cragName" role="presentation">
+    <a role="menuitem" tabindex="-1" class="name" href="#">@crag.cragName</a>
+</li>

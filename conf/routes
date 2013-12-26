@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
+GET     /about                      controllers.Application.about()
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
 GET     /biglist                    controllers.Boulders.biglist()

@@ -54,6 +54,11 @@ public class Application extends Controller {
            );
        }
     }
+    public static Result about(){
+        return ok(
+            about.render()
+        );
+    }
 
         // Internal static Login class
     public static class Login{

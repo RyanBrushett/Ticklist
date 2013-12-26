@@ -22,17 +22,21 @@
     <body onload="updateactive()">
         @views.html.navbar.navbar()
         <div class="container">
-        <div class="col-sm-3">
-            <h3>Hello @climber.username!</h3>
-            <table id="crags" class="table table-borderless table-condensed table-hover">
-            <tbody>
-                @crags.map{ crag =>
-                    @views.html.crags.item(crag)
-                }
-            </tbody>
-            </table>
+        <div class="col-sm-2">
+            <h4>Hello<br />@climber.username!</h4>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="cragdropdown" data-toggle="dropdown">
+                Locations
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="cragdropdown">
+                    @crags.map{ crag =>
+                        @views.html.crags.item(crag)
+                    }
+                </ul>
+            </div>
         </div>
-        <div id="main" class="col-sm-9">
+        <div id="main" class="col-sm-10">
             @body
         </div>
         </div>
