@@ -28,10 +28,14 @@ public class Crag extends Model{
         return find.all();
     }
     
-    public static String renameCrag(String name, String newName){
+        // These don't work yet and I don't think they will.
+        // Notably - I made cragName the PK of Crag and, since
+        // you can't very well edit that, this is going to
+        // need a sober second look later 
+    /*public static String renameCrag(String name, String newName){
         Crag crag = find.where().eq("cragName",name).findUnique();
         crag.cragName = newName;
         crag.update();
         return crag.cragName;
-    }
+    }*/
 }

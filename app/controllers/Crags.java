@@ -18,7 +18,12 @@ public class Crags extends Controller {
         return ok(item.render(newCrag));
     }
 
-    public static Result renameCrag(String name){
+
+        // These don't work yet and I don't think they will.
+        // Notably - I made cragName the PK of Crag and, since
+        // you can't very well edit that, this is going to
+        // need a sober second look later
+    /*public static Result renameCrag(String name){
         return ok(
             Crag.renameCrag(
                 name,
@@ -27,8 +32,11 @@ public class Crags extends Controller {
         );
     }
 
+        // And because the relationship goes boulder manytoone
+        // crag, I can't delete a crag without deleting boulders
+        // Poor planning but then this is a learning experience.
     public static Result deleteCrag(String cragname){
         Crag.find.ref(cragname).delete();
         return ok();
-    }
+    }*/
 }

@@ -13,7 +13,7 @@ public class Boulder extends Model{
     public String grade;
     public boolean sent = true;
     public Date climbedDate;
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
     public List<Climber> haveSent = new ArrayList<Climber>();
     @ManyToOne
     public Crag crag;
