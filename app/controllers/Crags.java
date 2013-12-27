@@ -23,7 +23,7 @@ public class Crags extends Controller {
         // Notably - I made cragName the PK of Crag and, since
         // you can't very well edit that, this is going to
         // need a sober second look later
-    /*public static Result renameCrag(String name){
+    public static Result renameCrag(String name){
         return ok(
             Crag.renameCrag(
                 name,
@@ -38,5 +38,5 @@ public class Crags extends Controller {
     public static Result deleteCrag(String cragname){
         Crag.find.ref(cragname).delete();
         return ok();
-    }*/
+    }
 }

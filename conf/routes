@@ -10,6 +10,7 @@ POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
 GET     /biglist                    controllers.Boulders.biglist()
 POST    /crags                      controllers.Crags.addCrag()
+DELETE  /crags/:crag                controllers.Crags.deleteCrag(crag: String)
 GET     /assets/javascripts/routes  controllers.Application.javascriptRoutes()
 
 # Map static resources from the /public folder to the /assets URL path

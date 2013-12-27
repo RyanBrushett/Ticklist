@@ -38,4 +38,27 @@ public class CragsTest extends WithApplication {
         assertEquals("Flatrock NL",crag1.location);
         assertEquals("Blood Bath",crag1.cragName);
     }
+    
+    @Test
+    public void deleteCragTest(){
+        Result result = callAction(
+            controllers.routes.ref.Crags.addCrag(),
+            fakeRequest().withSession("username","ryanbrushett")
+                .withFormUrlEncodedBody(ImmutableMap.of("cragName","Blood Bath","location","Flatrock NL"))
+        );
+        assertEquals(200,status(result));
+        Crag crag1 = Crag.find.where().eq("cragName","Blood Bath").findUnique();
+        List results = Crag.findAll();
+        assertEquals(3,results.size());
+        assertNotNull(crag1);
+        assertEquals("Flatrock NL",crag1.location);
+        assertEquals("Blood Bath",crag1.cragName);
+        Result result2 = callAction(
+            controllers.routes.ref.Crags.deleteCrag("Marine Lab"),
+            fakeRequest().withSession("username","ryanbrushett")
+        );
+        assertEquals(200,status(result2));
+        List results2 = Crag.findAll();
+        assertEquals(2,results2.size());
+    }
 }
