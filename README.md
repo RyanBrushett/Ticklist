@@ -4,9 +4,10 @@ Ticklist
 Play! framework test to make a rock climbing ticklist application.
 
 TODO:
+1) Crag location page.
+2) Boulders filter-by Crag.
 
-1) I'm going to move Crag creation to its own page called Locations.
-2) Each Location should have a link to filter the boulder list by itself.
-3) A user should be able to create a location from there*
-
-* Still working on this shit. I want it to be thru a form.
+NOTES:
+1) Modeling mistake: ALWAYS use Long id for id's rather than the name.
+   A property of the climb/location that may need to be edited after
+   the fact should NOT be the ID. Rookie mistake.

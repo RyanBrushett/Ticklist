@@ -1,0 +1,19 @@
+@(crags: List[Crag], climber: Climber)
+
+@main(crags, climber){
+    <div class="locations">
+        <table id="cragsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th><h3>Name</h3></th>
+                <th><h3>Location</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+        @crags.map{ crag =>
+            @views.html.crags.expanded(crag)
+        }
+        </tbody>
+        </table>
+    </div>
+}
