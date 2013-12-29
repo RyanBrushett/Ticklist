@@ -1,4 +1,4 @@
 @(crag: Crag)
 <li data-crag="@crag.cragName" role="presentation">
-    <a role="menuitem" tabindex="-1" class="name" href="#">@crag.cragName</a>
+    <a role="menuitem" tabindex="-1" class="name" href="@routes.Boulders.filteredList(crag.cragName)">@crag.cragName</a>
 </li>
