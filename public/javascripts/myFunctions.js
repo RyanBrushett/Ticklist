@@ -7,6 +7,9 @@ function updateactive(){
         document.getElementById("biglist").className="active";
     }
     if (path == "/about"){
-        document.getElementById("about").className="active";
+        document.getElementById("aboutpage").className="active";
+    }
+    if (path == "/crags"){
+        document.getElementById("locations").className="active";
     }
 }
