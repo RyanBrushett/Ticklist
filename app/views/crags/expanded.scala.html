@@ -1,7 +1,8 @@
 @(crag: Crag)
-<tr>
+<tr id="@crag.cragName">
     <td>
-        <a href="@routes.Boulders.filteredList(crag.cragName)"><h4>@crag.cragName</h4></a>
+        <a href="@routes.Boulders.filteredList(crag.cragName)"><h5>@crag.cragName</h5></a>
     </td>
-    <td><h4>@crag.location</h4></td>
+    <td><h5>@crag.location</h5></td>
+    <td><button id="deleteCragButton" class="btn btn-danger" onclick="deleteCrag('@crag.cragName')">Delete</button></td>
 </tr>

@@ -2,18 +2,32 @@
 
 @main(crags, climber){
     <div class="locations">
-        <table id="cragsTable" class="table table-striped">
+        <h3>Locations</h3>
+        <table id="cragsTable" class="table table-striped table-condensed">
         <thead>
             <tr>
-                <th><h3>Name</h3></th>
-                <th><h3>City</h3></th>
+                <th><h4>Name</h4></th>
+                <th><h4>City</h4></th>
+                <th><h4>Delete</h4></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="cragsTableBody">
         @crags.map{ crag =>
             @views.html.crags.expanded(crag)
         }
         </tbody>
         </table>
+        <div id="addLocation">
+        <h3>Add Location</h3>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" id="cragName" placeholder="Crag Name" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="location" placeholder="Location" />
+            </div>
+            <button id="newCragButton" type="button" class="btn btn-success">Add Location</button>
+        </form>
+        </div>
     </div>
 }
