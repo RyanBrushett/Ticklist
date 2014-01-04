@@ -1,4 +1,5 @@
 // local ajax module
+// Borrowed from another application I worked on one time.
 var local_ajax_mod = (function() {
 
 function ajax_request( ajax ) {
