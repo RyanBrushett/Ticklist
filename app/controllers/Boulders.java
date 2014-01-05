@@ -26,4 +26,11 @@ public class Boulders extends Controller {
             Climber.find.byId(request().username())
         ));
     }
+
+    public static Result addBoulder(){
+        return ok(addboulder.render(
+            Crag.find.all(),
+            Climber.find.byId(request().username())
+        ));
+    }
 }

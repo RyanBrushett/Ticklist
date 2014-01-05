@@ -13,6 +13,9 @@ function updateactive(){
         document.getElementById("locations").className="active";
         addCragInit();
     }
+    if (path == "/addboulder"){
+        document.getElementById("addBoulder").className="active";
+    }
 }
 
 Element.prototype.remove = function() {

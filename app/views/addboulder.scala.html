@@ -1,0 +1,31 @@
+@(crags: List[Crag], climber: Climber)
+
+@main(crags, climber){
+    <div id="addBoulder">
+    <h3>Add a new Boulder</h3>
+    <form role="form">
+        <div class="form-group">
+            <label for="climbName">Climb Name</label>
+            <input type="text" class="form-control" id="climbName" placeholder="Catch Me Quicker" />
+        </div>
+        <div class="form-group">
+            <label for="firstAssent">First Assent</label>
+            <input type="text" class="form-control" id="firstAssent" placeholder="John Doe" />
+        </div>
+        <div class="form-group">
+            <label for="grade">Grade</label>
+            <input type="text" class="form-control" id="grade" placeholder="V2" />
+        </div>
+        <div class="form-group">
+            <label for="cragName">Climbing Location</label>
+            <select class="form-control" id="cragName">
+            @crags.map{ crag =>
+                <option id="@crag.cragName">@crag.cragName</option>
+            }
+            </select>
+        </div>
+        <br />
+        <button id="newBoulderButton" type="button" class="btn btn-success">Add Boulder</button>
+    </form>
+    </div>
+}
