@@ -54,4 +54,19 @@ public class Boulder extends Model{
         this.update();
         return this;
     }
+
+    public Boulder untick(String name){
+        int i = 0;
+        while (i < haveSent.size()){
+            if (haveSent.get(i).username.equals(name)){
+                haveSent.remove(i);
+                this.update();
+                return this;
+            }
+            else{
+                ++i;
+            }
+        }
+        return null;
+    }
 }

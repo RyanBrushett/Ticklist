@@ -53,4 +53,8 @@ public class Boulders extends Controller {
     public static Result tickBoulder(String name){
         return ok(testItem.render(Boulder.find.ref(name).tick(request().username())));
     }
+
+    public static Result untickBoulder(String name){
+        return ok(testItem.render(Boulder.find.ref(name).untick(request().username())));
+    }
 }

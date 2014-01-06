@@ -15,7 +15,7 @@
     <td class="text-center" id="buttons@boulder.climbName">
     @if(boulder.haveSent.exists{ a=> a.username == climber.username}) { 
         <div class="btn-group btn-group-sm">
-        <button type="button" class="btn">Untick</button>
+        <button type="button" class="btn" onclick="untickBoulder('@boulder.climbName')">Untick</button>
         <button type="button" id="deleteBoulder" class="btn btn-danger" onclick="deleteBoulder('@boulder.climbName')">Delete</button>
         </div>
     } else {

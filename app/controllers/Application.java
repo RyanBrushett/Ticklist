@@ -26,7 +26,8 @@ public class Application extends Controller {
                 controllers.routes.javascript.Crags.deleteCrag(),
                 controllers.routes.javascript.Boulders.addBoulder(),
                 controllers.routes.javascript.Boulders.deleteBoulder(),
-                controllers.routes.javascript.Boulders.tickBoulder()
+                controllers.routes.javascript.Boulders.tickBoulder(),
+                controllers.routes.javascript.Boulders.untickBoulder()
             )
         );
     }

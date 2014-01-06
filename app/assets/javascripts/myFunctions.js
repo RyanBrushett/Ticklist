@@ -173,12 +173,39 @@ function tickBoulder(name){
             var td = document.getElementById("buttons" + name);
             td.innerHTML = "";
             td.innerHTML = "<div class=\"btn-group btn-group-sm\">" +
-            "<button type=\"button\" class=\"btn\">Untick</button>" +
+            "<button type=\"button\" class=\"btn\" onclick=\""+
+            "untickBoulder('" + name + "')\">Untick</button>" +
             "<button type=\"button\" class=\"btn\ btn-danger\" onclick=\"" +
             "deleteBoulder('" + name + "')\">Delete</button></div>";
         },
         err_fn: function(req){
             window.alert("it failed");
+        }
+    }, false);
+}
+
+function untickBoulder(name){
+    var rec = {
+        climbName : name
+    };
+    var json = JSON.stringify(rec);
+    var r = jsRoutes.controllers.Boulders.untickBoulder(name);
+    local_ajax_mod.ajax_request({
+        method: "DELETE",
+        link: r.url,
+        mime: 'application/json',
+        doc: json,
+        ok_fn: function(req){
+            var td = document.getElementById("buttons" + name);
+            td.innerHTML = "";
+            td.innerHTML = "<div class=\"btn-group btn-group-sm\">" +
+            "<button type=\"button\" class=\"btn btn-success\" onclick=\""+
+            "tickBoulder('" + name + "')\">Tick</button>" +
+            "<button type=\"button\" class=\"btn\ btn-danger\" onclick=\"" +
+            "deleteBoulder('" + name + "')\">Delete</button></div>";
+        },
+        err_fn: function(req){
+            window.alert("It failed!");
         }
     }, false);
 }

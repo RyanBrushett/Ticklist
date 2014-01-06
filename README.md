@@ -3,14 +3,24 @@ Ticklist
 
 Play! framework test to make a rock climbing ticklist application.
 
-TODO:
+The initial featureset is complete finally. Great learning experience so far!
+From here I'm going to jump into the "nice to haves" and play with the UI a
+little. I also plan on heading directly to my climbing gym and picking up
+my memebership for the next little while! Gonna be great to get back to climbing
+and have this ticklist application to keep track of my stuff for me.
 
-1) Need to add an undo functionality.
+NEXT STEPS:
+
+1) Comment my code.
+
+2) Look into the UI a little more to spice it up.
+
+3) Migrate to deadbolt2 for auth. This way I can have more than one user but
+restrict adding and deleting to just myself.
 
 NICE TO HAVE:
 
 1) Possibly a search?
-2) Migrate to deadbolt for authentication
 
 NOTES:
 
