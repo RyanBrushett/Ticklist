@@ -6,7 +6,7 @@ backups
 tmp
 .history
 dist
-lib/*.jar
+lib/postgresql-9.2-1002.jdbc4.jar
 /.idea
 /*.iml
 /out
