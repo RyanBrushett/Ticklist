@@ -1,7 +1,10 @@
 @(crags: List[Crag], boulders: List[Boulder], climber: Climber)
 
 @main(crags, climber) {
-    @if(boulders != null){
+    @if(boulders.isEmpty()){
+        <h3>No ticks yet! Check out the big list page
+        <a href="@routes.Boulders.biglist()">here</a>.</h3>
+    } else {
         @boulders.groupBy(_.crag).map{
             case (crag,boulders) => {
                 <header>
@@ -15,7 +18,6 @@
                             <th>Grade</th>
                             <th>FA</th>
                             <th class="text-center">Status</th>
-                            <th class="text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -14,16 +14,15 @@
     }
     <td class="text-center">
     @if(boulder.haveSent.exists{ a=> a.username == climber.username}) { 
-        <div class="btn-group btn-group-xs">
-        <button type="button" class="btn btn-success">Sent</button>
-        <button type="button" class="btn btn-danger">Undo</button>
+        <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-danger">Untick</button>
+        <button type="button" id="deleteBoulder" class="btn btn-danger" onclick="deleteBoulder('@boulder.climbName')">Delete</button>
         </div>
     } else {
-        <button type="button" class="btn btn-success btn-sm">Tick</button>
+        <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-success">Tick</button>
+        <button type="button" id="deleteBoulder" class="btn btn-danger" onclick="deleteBoulder('@boulder.climbName')">Delete</button>
+        </div>
     }
-    </td>
-    <td class="text-center">
-        <button type="button" id="deleteBoulder" class="btn btn-danger btn-sm"
-        onclick="deleteBoulder('@boulder.climbName')">Delete</button>
     </td>
 </tr>
