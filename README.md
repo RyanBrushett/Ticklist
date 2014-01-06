@@ -5,11 +5,12 @@ Play! framework test to make a rock climbing ticklist application.
 
 TODO:
 
-1) Need to add Tick and Undo functionality.
+1) Need to add an undo functionality.
 
 NICE TO HAVE:
 
 1) Possibly a search?
+2) Migrate to deadbolt for authentication
 
 NOTES:
 
