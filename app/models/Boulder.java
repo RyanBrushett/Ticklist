@@ -48,4 +48,10 @@ public class Boulder extends Model{
         boulder.save();
         return boulder;
     }
+
+    public Boulder tick(String name){
+        haveSent.add(Climber.find.ref(name));
+        this.update();
+        return this;
+    }
 }

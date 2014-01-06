@@ -157,3 +157,23 @@ function deleteBoulder(name){
         }
     }, false);
 }
+
+function tickBoulder(name){
+    var rec = {
+        climbName : name
+    };
+    var json = JSON.stringify(rec);
+    var r = jsRoutes.controllers.Boulders.tickBoulder(name);
+    local_ajax_mod.ajax_request({
+        method: "POST",
+        link: r.url,
+        mime: 'application/json',
+        doc: json,
+        ok_fn: function(req){
+            window.alert("It worked!");
+        },
+        err_fn: function(req){
+            window.alert("it failed");
+        }
+    }, false);
+}
