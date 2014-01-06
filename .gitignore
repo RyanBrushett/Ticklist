@@ -4,9 +4,9 @@ project/target
 target
 backups
 tmp
+lib/*.jar
 .history
 dist
-lib/postgresql-9.2-1002.jdbc4.jar
 /.idea
 /*.iml
 /out
