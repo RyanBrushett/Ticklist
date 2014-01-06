@@ -15,6 +15,7 @@ function updateactive(){
     }
     if (path == "/addboulder"){
         document.getElementById("addBoulder").className="active";
+        addBoulderInit();
     }
 }
 
@@ -93,6 +94,66 @@ function deleteCrag(name){
         },
         err_fn: function(req){
             window.alert("Failed: " + req);
+        }
+    }, false);
+}
+
+function addBoulderInit(){
+    var add_but = document.querySelector("#newBoulderButton");
+    var climbname = document.querySelector("#climbName");
+    var fa = document.querySelector("#firstAssent");
+    var g = document.querySelector("#grade");
+    var cragname = document.querySelector("#cragName");
+
+    if (add_but == null) return;
+
+    function clear_fields(){
+        climbname.value = "";
+        fa.value = "";
+        g.value = "";
+    }
+
+    add_but.addEventListener('click',function(evt){
+        var rec = {
+            climbName : climbname.value,
+            firstAssent : fa.value,
+            grade : g.value,
+            cragName : cragname.value
+        };
+        var json = JSON.stringify(rec);
+        var r = jsRoutes.controllers.Boulders.addBoulder();
+        local_ajax_mod.ajax_request({
+            method: "POST",
+            link: r.url,
+            mime: 'application/json',
+            doc: json,
+            ok_fn: function(req){
+                var added = document.getElementById("beenAdded");
+                added.innerHTML = "<h5>Added!</h5>";
+            },
+            err_fn: function(req){
+                window.alert("A boulder by this name already exists: " + climbname.value);
+            }
+        }, false);
+    });
+}
+
+function deleteBoulder(name){
+    var rec = {
+        climbName : name
+    };
+    var json = JSON.stringify(rec);
+    var r = jsRoutes.controllers.Boulders.deleteBoulder(name);
+    local_ajax_mod.ajax_request({
+        method: "DELETE",
+        link: r.url,
+        mime: 'application/json',
+        doc: json,
+        ok_fn: function(req){
+            var tr = document.getElementById(name).remove();
+        },
+        err_fn: function(req){
+            window.alert("It Failed!");
         }
     }, false);
 }

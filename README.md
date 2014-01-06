@@ -7,9 +7,6 @@ TODO:
 
 1) Need to add Tick and Undo functionality.
 
-2) Need to add Create/Delete Boulder.
-   Have added an Add Boulder page
-
 NICE TO HAVE:
 
 1) Possibly a search?

@@ -1,7 +1,6 @@
 @(crags: List[Crag], boulders: List[Boulder], climber: Climber)
 
 @main(crags, climber) {
-    <div class="boulders">
     @if(boulders != null){
         @boulders.groupBy(_.crag).map{
             case (crag,boulders) => {
@@ -16,6 +15,7 @@
                             <th>Grade</th>
                             <th>FA</th>
                             <th class="text-center">Status</th>
+                            <th class="text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,7 +25,6 @@
                     </tbody>
                 </table>
                 </div>
-            </div>
             }
         }
     }

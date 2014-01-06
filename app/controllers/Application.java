@@ -23,7 +23,9 @@ public class Application extends Controller {
         return ok(
             Routes.javascriptRouter("jsRoutes",
                 controllers.routes.javascript.Crags.addCrag(),
-                controllers.routes.javascript.Crags.deleteCrag()
+                controllers.routes.javascript.Crags.deleteCrag(),
+                controllers.routes.javascript.Boulders.addBoulder(),
+                controllers.routes.javascript.Boulders.deleteBoulder()
             )
         );
     }

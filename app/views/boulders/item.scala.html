@@ -1,12 +1,16 @@
 @(boulder: Boulder, climber: Climber)
 
-<tr data-boulder-name="@boulder.climbName">
+<tr id="@boulder.climbName">
     <td><h4>@boulder.climbName</h4></td>
     @if(boulder.grade != null){
         <td><b>@boulder.grade</b></td>
+    } else {
+        <td><b>(unknown)</b></td>
     }
     @if(boulder.firstAssent != null){
         <td><i>@boulder.firstAssent</i></td>
+    } else {
+        <td><i>(unknown)</i></td>
     }
     <td class="text-center">
     @if(boulder.haveSent.exists{ a=> a.username == climber.username}) { 
@@ -17,5 +21,9 @@
     } else {
         <button type="button" class="btn btn-success btn-sm">Tick</button>
     }
+    </td>
+    <td class="text-center">
+        <button type="button" id="deleteBoulder" class="btn btn-danger btn-sm"
+        onclick="deleteBoulder('@boulder.climbName')">Delete</button>
     </td>
 </tr>

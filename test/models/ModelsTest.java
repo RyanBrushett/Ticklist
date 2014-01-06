@@ -41,14 +41,14 @@ public class ModelsTest extends WithApplication {
     public void boulderCheckSent(){
         List<Boulder> boulders;
         boulders = Boulder.findAllSent();
-        assertEquals(3,boulders.size());
+        assertEquals(0,boulders.size());
     }
 
     @Test
     public void boulderCheckNeverSent(){
         List<Boulder> boulders;
         boulders = Boulder.findBouldersNeverSent();
-        assertEquals(0,boulders.size());
+        assertEquals(3,boulders.size());
     }
 
     @Test

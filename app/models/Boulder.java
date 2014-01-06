@@ -13,12 +13,19 @@ public class Boulder extends Model{
     public String grade;
     public boolean sent = true;
     public Date climbedDate;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<Climber> haveSent = new ArrayList<Climber>();
     @ManyToOne
     public Crag crag;
 
     public static Model.Finder<String,Boulder> find = new Model.Finder(String.class,Boulder.class);
+
+    public Boulder(String name, String fa, String grade, String cragname){
+        climbName = name;
+        firstAssent = fa;
+        this.grade = grade;
+        crag = Crag.find.ref(cragname);
+    }
 
     public static List<Boulder> findBoulderSentBy(String climber){
         return find.where().eq("haveSent.username",climber).findList();
@@ -36,9 +43,8 @@ public class Boulder extends Model{
         return find.where().eq("crag.cragName",crag).findList();
     }
 
-    public static Boulder create(Boulder boulder, String crag, String grade){
-        boulder.crag = Crag.find.ref(crag);
-        boulder.grade = grade;
+    public static Boulder create(String name, String fa, String grade, String cragname){
+        Boulder boulder = new Boulder(name,fa,grade,cragname);
         boulder.save();
         return boulder;
     }
