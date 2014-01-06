@@ -6,6 +6,7 @@ backups
 tmp
 .history
 dist
+lib/*.jar
 /.idea
 /*.iml
 /out
