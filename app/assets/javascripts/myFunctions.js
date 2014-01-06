@@ -170,7 +170,12 @@ function tickBoulder(name){
         mime: 'application/json',
         doc: json,
         ok_fn: function(req){
-            window.alert("It worked!");
+            var td = document.getElementById("buttons" + name);
+            td.innerHTML = "";
+            td.innerHTML = "<div class=\"btn-group btn-group-sm\">" +
+            "<button type=\"button\" class=\"btn\">Untick</button>" +
+            "<button type=\"button\" class=\"btn\ btn-danger\" onclick=\"" +
+            "deleteBoulder('" + name + "')\">Delete</button></div>";
         },
         err_fn: function(req){
             window.alert("it failed");
