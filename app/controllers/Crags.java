@@ -20,8 +20,11 @@ public class Crags extends Controller {
     }
 
     public static Result deleteCrag(String cragname){
-        Crag.find.ref(cragname).delete();
-        return ok();
+        if (request().username().equals("ryanbrushett")){
+            Crag.find.ref(cragname).delete();
+            return ok();
+        }
+        return unauthorized("You are not authorized to delete locations");
     }
 
     public static Result listCrags(){
