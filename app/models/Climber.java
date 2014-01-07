@@ -27,4 +27,10 @@ public class Climber extends Model{
     public static Climber authenticate(String username, String password){
         return find.where().eq("username",username).eq("password",password).findUnique();
     }
+
+    public static Climber create(String uname, String pword, String fullname){
+        Climber user = new Climber(uname,fullname,pword);
+        user.save();
+        return user;
+    }
 }

@@ -18,6 +18,7 @@ public class Application extends Controller {
       ));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result javascriptRoutes(){
         response().setContentType("text/javascript");
         return ok(
@@ -62,6 +63,13 @@ public class Application extends Controller {
     public static Result about(){
         return ok(
             about.render()
+        );
+    }
+
+    public static Result signup(){
+        session().clear();
+        return ok(
+            signup.render()
         );
     }
 

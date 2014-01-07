@@ -17,6 +17,9 @@ function updateactive(){
         document.getElementById("addBoulder").className="active";
         addBoulderInit();
     }
+    if (path == "/signup"){
+        createClimber();
+    }
 }
 
 Element.prototype.remove = function() {
@@ -130,6 +133,7 @@ function addBoulderInit(){
             ok_fn: function(req){
                 var added = document.getElementById("beenAdded");
                 added.innerHTML = "<h5>Added!</h5>";
+                clear_fields();
             },
             err_fn: function(req){
                 window.alert("A boulder by this name already exists: " + climbname.value);
@@ -208,4 +212,41 @@ function untickBoulder(name){
             window.alert("It failed!");
         }
     }, false);
+}
+
+function createClimber(){
+    var add_but = document.querySelector("#signupbutton");
+    var username = document.querySelector("#username");
+    var password = document.querySelector("#password");
+    var realname = document.querySelector("#realname");
+
+    if (add_but == null) return;
+
+    function clear_fields(){
+        username.value = "";
+        password.value = "";
+        realname.value = "";
+    }
+
+    add_but.addEventListener('click',function(evt){
+        var rec = {
+            username : username.value,
+            password : password.value,
+            realname : realname.value
+        };
+        var json = JSON.stringify(rec);
+        var r = signupRoute.controllers.Climbers.signup();
+        local_ajax_mod.ajax_request({
+            method: "POST",
+            link: r.url,
+            mime: 'application/json',
+            doc: json,
+            ok_fn: function(req){
+                clear_fields();
+            },
+            err_fn: function(req){
+                window.alert("A user by this name already exists: " + username.value);
+            }
+        }, false);
+    });
 }
