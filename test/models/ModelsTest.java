@@ -32,7 +32,7 @@ public class ModelsTest extends WithApplication {
 
     @Test
     public void authenticationTest(){
-        assertNotNull(Climber.authenticate("ryanbrushett","Wireless01!"));
+        assertNotNull(Climber.authenticate("ryanbrushett","password"));
         assertNull(Climber.authenticate("ryanbrushett","badpassword"));
         assertNull(Climber.authenticate("katesargent","badpassword"));
     }

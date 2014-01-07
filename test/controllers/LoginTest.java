@@ -25,7 +25,7 @@ public class LoginTest extends WithApplication {
             controllers.routes.ref.Application.authenticate(),
             fakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
                 "username","ryanbrushett",
-                "password","Wireless01!"))
+                "password","password"))
         );
         assertEquals(303,status(result));
         assertEquals("ryanbrushett",session(result).get("username"));
