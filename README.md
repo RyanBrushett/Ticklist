@@ -15,9 +15,6 @@ NEXT STEPS:
 
 2) Look into the UI a little more to spice it up.
 
-3) Migrate to deadbolt2 for auth. This way I can have more than one user but
-restrict adding and deleting to just myself.
-
 NICE TO HAVE:
 
 1) Possibly a search?
