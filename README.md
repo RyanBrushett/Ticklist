@@ -25,7 +25,7 @@ other methods.
 
 NEXT STEPS:
 
-1) Add boulders to make the application useful.
+1) Add boulders on my end to make the application useful and testable
 
 2) Comment my code and clean it the hell up.
 
