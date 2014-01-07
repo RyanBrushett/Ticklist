@@ -2,7 +2,7 @@ users:
     - &ryan !!models.Climber
         username:       ryanbrushett
         name:           Ryan Brushett
-        password:       Wireless01!
+        password:       password
 
 crags:
     - &flatrock !!models.Crag
