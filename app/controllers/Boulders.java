@@ -42,12 +42,15 @@ public class Boulders extends Controller {
             form().bindFromRequest().get("grade"),
             form().bindFromRequest().get("cragName")
         );
-        return ok(testItem.render(newBoulder));
+        return ok();
     }
 
     public static Result deleteBoulder(String name){
-        Boulder.find.ref(name).delete();
-        return ok();
+        if (request().username().equals("ryanbrushett")){
+            Boulder.find.ref(name).delete();
+            return ok();
+        }
+        return unauthorized("You are not authorized to delete boulders");
     }
 
     public static Result tickBoulder(String name){

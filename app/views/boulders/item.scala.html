@@ -1,14 +1,14 @@
 @(boulder: Boulder, climber: Climber)
 
 <tr id="@boulder.climbName">
-    <td><h4>@boulder.climbName</h4></td>
+    <td><h5>@boulder.climbName</h5></td>
     @if(boulder.grade != null){
-        <td><b>@boulder.grade</b></td>
+        <td><h5><b>@boulder.grade</b></h5></td>
     } else {
         <td><b>(unknown)</b></td>
     }
     @if(boulder.firstAssent != null){
-        <td><i>@boulder.firstAssent</i></td>
+        <td><h5><i>@boulder.firstAssent</i></h5></td>
     } else {
         <td><i>(unknown)</i></td>
     }

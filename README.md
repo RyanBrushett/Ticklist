@@ -9,15 +9,33 @@ little. I also plan on heading directly to my climbing gym and picking up
 my memebership for the next little while! Gonna be great to get back to climbing
 and have this ticklist application to keep track of my stuff for me.
 
+JUST COMPLETED:
+
+1) Have restricted deletion to just myself. Should I also restrict adds? Will have to think about that.
+Methods throw unauthorized with a message and log details to the console.
+
+2) Cleaned up UI even further.
+
+3) Created a sign-up page using POST / form submission (similar to login) rather than AJAX/JSON as with all
+other methods.
+
+4) Secured javascript routes. Bad oversight on my part.
+
+5) Cleaned up user.
+
 NEXT STEPS:
 
-1) Comment my code.
+1) Add boulders on my end to make the application useful and testable
 
-2) Look into the UI a little more to spice it up.
+2) Comment my code and clean it the hell up.
+
+3) Look into the UI a little more to spice it up.
 
 NICE TO HAVE:
 
 1) Possibly a search?
+
+2) Wishlist, kind of thing? Somewhere in between the big list and the ticks.
 
 NOTES:
 

@@ -93,7 +93,8 @@ function deleteCrag(name){
             var tr = document.getElementById(name).remove();
         },
         err_fn: function(req){
-            window.alert("Failed: " + req);
+            console.log(req.status + ": " + req.statusText);
+            console.log("Failed: " + req.responseText);
         }
     }, false);
 }
@@ -130,6 +131,7 @@ function addBoulderInit(){
             ok_fn: function(req){
                 var added = document.getElementById("beenAdded");
                 added.innerHTML = "<h5>Added!</h5>";
+                clear_fields();
             },
             err_fn: function(req){
                 window.alert("A boulder by this name already exists: " + climbname.value);
@@ -153,7 +155,8 @@ function deleteBoulder(name){
             var tr = document.getElementById(name).remove();
         },
         err_fn: function(req){
-            window.alert("It Failed!");
+            console.log(req.status + ": " + req.statusText);
+            console.log("Failed: " + req.responseText);
         }
     }, false);
 }
