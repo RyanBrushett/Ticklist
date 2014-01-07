@@ -55,3 +55,4 @@ README
 .Trashes
 ehthumbs.db
 Thumbs.db
+conf/application.conf
