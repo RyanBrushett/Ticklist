@@ -21,6 +21,8 @@ other methods.
 
 4) Secured javascript routes. Bad oversight on my part.
 
+5) Cleaned up user.
+
 NEXT STEPS:
 
 1) Add boulders to make the application useful.
